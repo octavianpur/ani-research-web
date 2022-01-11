@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext} from "react";
-import useLocalStorage from "../utils/useLocalStorage";
 import auth from "../services/authService";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { SignUpResponse } from "../interfaces/AuthInterfaces";
@@ -58,7 +57,6 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
       );
     }
     if (appData?.user) {
-      console.log(appData.user);
       userContext.setUser(appData.user);
     }
   }, [appData]);

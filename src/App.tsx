@@ -1,17 +1,29 @@
 import "./App.css";
-
-
-import { Routes, Route } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Gdpr from "./pages/Gdpr";
 import Terms from "./pages/Terms";
-import Users from "./pages/Dashboard/Users";
+import Users from "./pages/DashboardPage/Users";
 import MainMenu from "./components/MainMenu";
 import DashHeader from "./components/DashHeader";
-
+import UserContext from "./store/UserContext";
+import NotVerified from "./pages/NotVerified";
 
 interface Props {}
 
 const App: React.FC<Props> = (props) => {
+  const navigate = useNavigate();
+  const userCtx = useContext(UserContext);
+
+
+  useEffect(()=>{
+    console.log(userCtx);
+    if(userCtx.roles.length===0){
+      navigate("/")
+    }else{
+      navigate("/users")
+    }
+  },[userCtx])
 
   return (
     <div className="app-wrapper">
@@ -24,12 +36,10 @@ const App: React.FC<Props> = (props) => {
         </div>
         <div className="content-container">
           <Routes>
-            <Route path="/terms" element={<Terms></Terms>}></Route>
-            <Route path="/gdpr" element={<Gdpr></Gdpr>}></Route>
-            <Route
-              path="/"
-              element={<Users/>}
-            ></Route>
+            <Route path="/" element={<NotVerified/>}></Route>
+            <Route path="/users" element={<Users/>}></Route>
+            <Route path="/terms" element={<Terms/>}></Route>
+            <Route path="/gdpr" element={<Gdpr/>}></Route>
           </Routes>
         </div>
       </div>
