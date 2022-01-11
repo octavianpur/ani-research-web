@@ -4,7 +4,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Gdpr from "./pages/Gdpr";
 import Terms from "./pages/Terms";
-import Users from "./components/Users";
+import Users from "./pages/Dashboard/Users";
 import MainMenu from "./components/MainMenu";
 import DashHeader from "./components/DashHeader";
 
