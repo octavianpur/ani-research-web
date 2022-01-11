@@ -2,6 +2,15 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## First installation
+
+In the project root folder (where package.json is) run 
+
+### `yarn install`
+
+It installs all dependencies.
+
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -9,7 +18,9 @@ In the project directory, you can run:
 ### `yarn start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:7000](http://localhost:7000) to view it in the browser.
+
+(default port of create-react-app is 3000. We use port 7000 to be compatible with the API and Google Auth requirements.)
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.

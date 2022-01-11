@@ -15,7 +15,6 @@ const SignIn: React.FC<Props> = ({ authUrl }) => {
           </a>
           <p>Magna eiusmod culpa enim sit esse est ut nostrud do excepteur et proident enim eiusmod.</p>
           <p>Magna eiusmod culpa enim sit esse est ut nostrud do excepteur et proident enim eiusmod. Magna eiusmod culpa enim sit esse <a href="/terms">Termeni si conditii</a> si <a href="/gdpr">Politica GDPR</a> ut nostrud do excepteur et proident enim eiusmod.</p>
-          <p></p>
       </div>
     </div>
   );

@@ -1,7 +1,5 @@
-import React, { useState, useEffect} from "react";
-import useLocalStorage, {
-  getStorageFieldValue,
-} from "../utils/useLocalStorage";
+import React, { useState, useEffect, useContext} from "react";
+import useLocalStorage from "../utils/useLocalStorage";
 import auth from "../services/authService";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { SignUpResponse } from "../interfaces/AuthInterfaces";
@@ -9,34 +7,30 @@ import SignUp from "../pages/SignUp";
 import Terms from "../pages/Terms";
 import Gdpr from "../pages/Gdpr";
 
+import AuthContext from "../store/AuthContext";
+
 interface Props {}
 
 const AuthProvider: React.FC<Props> = ({ children }) => {
-  const navigate = useNavigate();
 
-  const [dataLoaded, setDataLoaded] = useState(false);
+  const navigate = useNavigate();
+  const authContext = useContext(AuthContext);
   const [appData, setAppData] = useState<SignUpResponse | undefined>();
   const [authUrl, setAuthUrl] = useState("");
-  const [token, setToken] = useLocalStorage("token", "");
-  const [refreshToken, setRefreshToken] = useLocalStorage("refreshToken", "");
-  const [tokenExpAt, setTokenExpAt] = useLocalStorage("tokenExpAt", 0);
-  const [refreshTokenExpAt, setRefreshTokenExpiresAt] = useLocalStorage(
-    "refreshTokenExpAt",
-    0
-  );
   const [user, setUser] = useLocalStorage("user");
   const params = new URLSearchParams(document.location.search);
   const googleState = params.get("state");
 
+
   useEffect(() => {
-    if (!getStorageFieldValue("token") && !googleState) {
+    if (!authContext.token && !googleState) {
       const getAuthUrl = async () => {
         const response = await auth.getAuthUrl();
         setAuthUrl(response.authUrl);
       };
       getAuthUrl();
     }
-  }, [token, googleState]);
+  }, [authContext, googleState]);
 
   useEffect(() => {
     if (googleState && params.get("code")) {
@@ -44,7 +38,6 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
         const response = await auth.signIn(params.get("code"));
         if (response) {
           setAppData(response);
-          setDataLoaded(true);
           navigate("/");
         }
       };
@@ -54,12 +47,12 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
 
   useEffect(() => {
     if (appData?.token) {
-      setToken(appData?.token.access);
-      setRefreshToken(appData.token.refresh);
-      setTokenExpAt(
+      authContext.setToken(appData.token.access)
+      authContext.setRefreshToken(appData.token.refresh);
+      authContext.setTokenExpAt(
         new Date().getTime() + appData.token.accessExpiresIn * 1000
       );
-      setRefreshTokenExpiresAt(
+      authContext.setRefreshTokenExpAt(
         new Date().getTime() + appData.token.refreshExpiresIn * 1000
       );
     }
@@ -76,8 +69,8 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
 
   return (
     <>
-      {!token ||
-      (refreshTokenExpAt && new Date().getTime() > refreshTokenExpAt) ? (
+      {!authContext.token ||
+      (authContext.refreshTokenExpAt && new Date().getTime() > authContext.refreshTokenExpAt) ? (
         <Routes>
           <Route path="/terms" element={<Terms></Terms>}></Route>
           <Route path="/gdpr" element={<Gdpr></Gdpr>}></Route>
