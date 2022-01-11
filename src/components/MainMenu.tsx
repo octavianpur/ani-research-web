@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import "./MainMenu.css";
 
-import { unverifiedMenuItems, adminMenuItems } from "../constants/menuItems";
+import { unverifiedMenuItems, adminMenuItems } from "../resources/menuItems";
 import { MenuItem } from "../interfaces/MenuItemInterface";
 import { CurrentUser } from "../interfaces/UserInterfaces";
 
