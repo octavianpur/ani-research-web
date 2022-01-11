@@ -8,6 +8,7 @@ import Terms from "../pages/Terms";
 import Gdpr from "../pages/Gdpr";
 
 import AuthContext from "../store/AuthContext";
+import UserContext from "../store/UserContext";
 
 interface Props {}
 
@@ -15,9 +16,9 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
 
   const navigate = useNavigate();
   const authContext = useContext(AuthContext);
+  const userContext = useContext(UserContext);
   const [appData, setAppData] = useState<SignUpResponse | undefined>();
   const [authUrl, setAuthUrl] = useState("");
-  const [user, setUser] = useLocalStorage("user");
   const params = new URLSearchParams(document.location.search);
   const googleState = params.get("state");
 
@@ -57,15 +58,11 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
       );
     }
     if (appData?.user) {
-      setUser(appData.user);
+      console.log(appData.user);
+      userContext.setUser(appData.user);
     }
   }, [appData]);
 
-  useEffect(() => {
-    if (user) {
-      // console.log(user);
-    }
-  }, [user]);
 
   return (
     <>

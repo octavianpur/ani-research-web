@@ -1,0 +1,17 @@
+.app-wrapper{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    box-sizing: border-box;
+}
+
+.content-wrapper{
+    display: grid;
+    grid-template-rows: 60px 1fr;
+    height: 100%;
+}
+
+.content-container{
+    box-sizing: border-box;
+}

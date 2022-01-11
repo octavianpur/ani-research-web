@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_BASE_URL, WEB_BASE_URL } from "./constants";
+import { API_BASE_URL, WEB_BASE_URL } from "../constants/apiLinks";
 
 import { AuthUrl, SignUpResponse } from "../interfaces/AuthInterfaces";
 

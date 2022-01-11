@@ -1,8 +1,6 @@
 import axios from "axios";
-import { API_BASE_URL } from "./constants";
+import { API_BASE_URL } from "../constants/apiLinks";
 import { User } from "../interfaces/UserInterfaces";
-
-
 
 const userService = {
   getUsers: async (tokenStatus: {

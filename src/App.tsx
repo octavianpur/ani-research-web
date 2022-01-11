@@ -1,51 +1,38 @@
-
 import "./App.css";
-import { Routes, Route, useNavigate } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
-import AuthContext from "./store/AuthContext";
 
-import userService from './services/userService';
-import useTokenStatus from "./utils/useTokenStatus";
 
-import { User } from './interfaces/UserInterfaces'
+import { Routes, Route } from "react-router-dom";
+import Gdpr from "./pages/Gdpr";
+import Terms from "./pages/Terms";
+import Users from "./components/Users";
+import MainMenu from "./components/MainMenu";
+import DashHeader from "./components/DashHeader";
 
-interface Props {
 
-}
+interface Props {}
 
 const App: React.FC<Props> = (props) => {
 
-
-  const authContext = useContext(AuthContext);
-
-  const [ users, setUsers ] = useState<User[]>([]);
-
-  const handlePurgeToken = () => {
-    authContext.setToken("")
-  }
-  const tokenStatus = useTokenStatus();
-
-  const handleGetUsers = async () => {
-    if(tokenStatus.active){
-      const usersResponse = async() => {
-        const response = await userService.getUsers({...tokenStatus});
-        setUsers(response);
-      }
-      usersResponse();
-    }
-  }
-
-  useEffect(()=>{
-   
-  },[])
-
-
-
   return (
-    <div className="dash-wrapper">
-      <button onClick={handleGetUsers}>Apasa</button>
-
-      {users.length>0&&users.map((user, index)=><p key={`user-${index}`}>{user.displayName}</p>)}
+    <div className="app-wrapper">
+      <div className="menu-wrapper">
+        <MainMenu></MainMenu>
+      </div>
+      <div className="content-wrapper">
+        <div className="main-header">
+          <DashHeader></DashHeader>
+        </div>
+        <div className="content-container">
+          <Routes>
+            <Route path="/terms" element={<Terms></Terms>}></Route>
+            <Route path="/gdpr" element={<Gdpr></Gdpr>}></Route>
+            <Route
+              path="/"
+              element={<Users/>}
+            ></Route>
+          </Routes>
+        </div>
+      </div>
     </div>
   );
 };

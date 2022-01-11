@@ -6,14 +6,17 @@ import reportWebVitals from "./reportWebVitals";
 import AuthProvider from "./providers/AuthProvider";
 import { AuthContextProvider } from "./store/AuthContext";
 import { BrowserRouter as Router } from "react-router-dom";
+import { UserContextProvider } from "./store/UserContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <AuthContextProvider>
-        <AuthProvider>
-          <App />
-        </AuthProvider>
+        <UserContextProvider>
+          <AuthProvider>
+            <App />
+          </AuthProvider>
+        </UserContextProvider>
       </AuthContextProvider>
     </Router>
   </React.StrictMode>,

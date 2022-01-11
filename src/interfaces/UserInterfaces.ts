@@ -3,9 +3,20 @@ export interface User {
     role: string;
     roleId: number;
     displayName: string;
+    profileImageUrl: string,
     email: string;
-    provider: String;
+    provider: string;
     created: Date;
     updated: Date;
     lastLogin: Date;
+}
+
+export interface CurrentUser {
+    id: number,
+    displayName: string,
+    email: string,
+    firstName: string,
+    lastName: string,
+    profileImageUrl: string
+    roles: number[]
 }
