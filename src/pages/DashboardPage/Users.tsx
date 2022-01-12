@@ -1,9 +1,9 @@
 import { Avatar } from "@mui/material";
 import React, { useState, useEffect } from "react";
-import { User } from '../interfaces/UserInterfaces'
+import { User } from '../../interfaces/UserInterfaces'
 
-import userService from '../services/userService';
-import useTokenStatus from "../utils/useTokenStatus";
+import userService from '../../services/userService';
+import useTokenStatus from "../../utils/useTokenStatus";
 
 import "./Users.css"
 

@@ -1,5 +1,5 @@
 import React from "react";
-import "./TermsAndGdpr.css";
+import "./SignUpDialogues.css";
 import { Button } from "@mui/material";
 
 interface Props {}

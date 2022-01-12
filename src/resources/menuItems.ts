@@ -15,7 +15,7 @@ export const adminMenuItems = [
   {
     icon: "people",
     text: "Utilizatori",
-    link: "/",
+    link: "/users",
   },
   {
     icon: "privacy_tip",

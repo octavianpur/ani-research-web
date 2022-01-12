@@ -8,8 +8,9 @@
 
 .content-wrapper{
     display: grid;
-    grid-template-rows: 60px 1fr;
+    grid-template-rows: auto 1fr;
     height: 100%;
+    box-sizing: border-box;
 }
 
 .content-container{

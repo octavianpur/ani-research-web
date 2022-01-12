@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_BASE_URL } from "../constants/apiLinks";
+import { API_BASE_URL } from "../resources/apiLinks";
 import { User } from "../interfaces/UserInterfaces";
 
 const userService = {
