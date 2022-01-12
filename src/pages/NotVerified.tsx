@@ -1,5 +1,5 @@
 import React from "react";
-import "./TermsAndGdpr.css";
+import "./SignUpDialogues.css";
 
 interface Props {}
 
