@@ -23,6 +23,7 @@ jobs:
 
       - name: npm install, build, and test
         run: |
+          unset CI
           npm install
           npm install yarn
           yarn build
