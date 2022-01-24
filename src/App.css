@@ -7,12 +7,18 @@
 }
 
 .content-wrapper{
-    display: grid;
-    grid-template-rows: auto 1fr;
-    height: 100%;
-    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100vh;
+}
+
+.main-header{
+    flex: 0;
 }
 
 .content-container{
+    flex: 1;
     box-sizing: border-box;
+    overflow: hidden;
 }
