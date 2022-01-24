@@ -7,6 +7,7 @@ import {
   TextField,
 } from "@mui/material";
 import React, { useState, useEffect } from "react";
+import UsersFiltersDialog from "../../components/UsersComponents/UsersFiltersDialog";
 import UsersSearchBarWithFilters from "../../components/UsersComponents/UsersSearchBarWithFilters";
 import UsersTableHeader from "../../components/UsersComponents/UsersTableHeader";
 import UsersTableRow from "../../components/UsersComponents/UsersTableRow";
@@ -19,17 +20,26 @@ import "./Users.css";
 
 const Users = (props: any) => {
   const [users, setUsers] = useState<User[]>([]);
+  const [dialogOpened, setDialogOpened] = useState(false)
   const tokenStatus = useTokenStatus();
+
+
+  const handleFiltersOpen = () =>{
+    setDialogOpened(true);
+  }
 
   const handleChangePage = () => {};
 
   const handleChangeRowsPerPage = () => {};
 
+  const handleFilters = () => {
+
+  }
+
   useEffect(() => {
     if (tokenStatus.active) {
       const usersResponse = async () => {
         const response = await userService.getUsers({ ...tokenStatus });
-        console.log(response);
         setUsers(response);
       };
       usersResponse();
@@ -38,8 +48,9 @@ const Users = (props: any) => {
 
   return (
     <div className="users-wrapper">
+
       <div className="search-field">
-      <UsersSearchBarWithFilters></UsersSearchBarWithFilters>
+      <UsersSearchBarWithFilters onFiltersOpen={handleFiltersOpen}></UsersSearchBarWithFilters>
       </div>
       <div className="table-wrapper">
         <div className="table-holder">
@@ -82,6 +93,7 @@ const Users = (props: any) => {
           />
         </div>
       </div>
+      <UsersFiltersDialog open={dialogOpened} onClose={()=>setDialogOpened(false)} onFilters={handleFilters}></UsersFiltersDialog>
     </div>
   );
 };

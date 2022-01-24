@@ -5,7 +5,12 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Icon from "@mui/material/Icon";
 
-const UsersSearchBarWithFilters = () => {
+interface Props{
+    onFiltersOpen:any
+}
+
+
+const UsersSearchBarWithFilters: React.FC<Props> = ({onFiltersOpen}) => {
   return (
     <Paper
       component="form"
@@ -26,7 +31,7 @@ const UsersSearchBarWithFilters = () => {
       />
 
       <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-      <IconButton sx={{ p: "10px" }} aria-label="directions">
+      <IconButton sx={{ p: "10px" }} aria-label="directions" onClick={onFiltersOpen}>
         <Icon>tune</Icon>
       </IconButton>
     </Paper>
