@@ -24,7 +24,7 @@ jobs:
       - name: npm install, build, and test
         run: |
           npm install
-          npm install yarn –g
+          npm install yarn
           yarn build
           # npm run test --if-present
           yarn test
