@@ -3,6 +3,9 @@
 
 name: Build and deploy Node.js app to Azure Web App - my-ani-research-web-app
 
+env:
+ AZURE_WEBAPP_PACKAGE_PATH: 'build'  # set this to the path to your web app project, defaults to the repository root
+
 on:
   push:
     branches:
@@ -77,4 +80,4 @@ jobs:
           app-name: 'my-ani-research-web-app'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_EDA5C539F48A4123AF4FE100F9362D71 }}
-          package: .
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
