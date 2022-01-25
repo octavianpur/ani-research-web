@@ -39,7 +39,7 @@ jobs:
           unset CI
           npm install --production
           #npm install yarn
-          npm build
+          #npm build
           npm run test --if-present
           # yarn test
       - name: add process.json
