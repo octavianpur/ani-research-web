@@ -35,40 +35,14 @@ const auth = {
   refreshToken: async (refreshToken: string): Promise<any> => {
     let response: any;
     try {
-<<<<<<< HEAD
-      response = await axios.get(`${API_BASE_URL}/auth/refresh`,{
-        params: {token: refreshToken}
-      })
-=======
       response = await axios.get(`${API_BASE_URL}/auth/refresh`, {
         data: { token: refreshToken },
       });
->>>>>>> 5161bde... filters functionalities added
       const data = await response.data;
       return data;
     } catch (error) {
       response = error;
       console.log(error);
-    }
-    return response;
-  },
-  signOutUser: async (tokenStatus: {
-    token: string;
-    active: boolean;
-  }): Promise<any> => {
-    let response: any;
-    if (tokenStatus.active) {
-      const config = {
-        headers: { Authorization: `Bearer ${tokenStatus.token}` },
-      };
-      try {
-        response = await axios.get(`${API_BASE_URL}/auth/signout`, config);
-        const data = await response.data;
-        return data;
-      } catch (error) {
-        response = error;
-        console.log(error);
-      }
     }
     return response;
   },
