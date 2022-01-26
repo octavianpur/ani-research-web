@@ -23,7 +23,6 @@ const userService = {
     }
     return response;
   },
-
     
   getSpecifiedUser: async(tokenStatus: {
     token: string;
@@ -173,7 +172,6 @@ const userService = {
     }
     return response;
   },
-
 };
 
 export default userService;
