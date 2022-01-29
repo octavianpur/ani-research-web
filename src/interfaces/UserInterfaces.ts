@@ -6,6 +6,8 @@ export interface User {
     profileImageUrl: string,
     email: string;
     provider: string;
+    socialInfo: string,
+    phone: string,
     created: Date;
     updated: Date;
     lastLogin: Date;
@@ -20,3 +22,12 @@ export interface CurrentUser {
     profileImageUrl: string
     roles: number[]
 }
+
+export interface Filters {
+    statusFilters: number[],
+    roleFilters: number[],
+    lastDateFilter:{
+      logged: number|null,
+      period?: number|null|string
+    }
+  }
