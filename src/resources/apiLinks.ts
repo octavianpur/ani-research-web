@@ -5,4 +5,4 @@
 
 
 export const API_BASE_URL = 'https://api-research.azurewebsites.net/api';
-export const WEB_BASE_URL = 'https://nice-ground-0ff49b203.1.azurestaticapps.net/';
+export const WEB_BASE_URL = 'https://nice-ground-0ff49b203.1.azurestaticapps.net';
