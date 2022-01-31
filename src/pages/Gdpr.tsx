@@ -9,7 +9,7 @@ const Gdpr: React.FC<Props> = () => {
     <div className="terms-wrapper">
       <div className="terms-container">
         <p>
-          My change - Ex adipisicing commodo nostrud ex commodo laboris sit nostrud culpa
+          My change 2 - Ex adipisicing commodo nostrud ex commodo laboris sit nostrud culpa
           anim ut. Ad magna Lorem ut eu laboris. Ex eiusmod in amet pariatur.
         </p>
         <p>
