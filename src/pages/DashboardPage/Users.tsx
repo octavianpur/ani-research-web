@@ -13,7 +13,6 @@ import UsersTableRow from "../../components/UsersComponents/UsersTableRow";
 import CustomTableHeader from "../../components/Shared/CustomTableHeader";
 import SearchBarWithFiltersController from "../../components/Shared/SearchBarWithFiltersController";
 
-
 import { User, Filters } from "../../interfaces/UserInterfaces";
 
 import userService from "../../services/userService";
@@ -160,6 +159,8 @@ const Users = (props: any) => {
         ></UsersFIltersOverview>
       </div>
       <div className="search-field">
+
+
 
         <SearchBarWithFiltersController
           onSearchChanged={handleSearch}
